@@ -8,11 +8,15 @@ This repository contains my Linux scripts that are good enough for general use b
 
 This script is useful if you want to disable Tailscale when you connect to certain networks (ie: your home Wi-Fi) and enable Tailscale when connected to any other network. It can easily be modified to perform any command unrelated to Tailscale when these conditions occur.
 
-The script should be stored in `/etc/NetworkManager/dispatcher.d/`. It is invoked by [NetworkManager-dispatcher](https://networkmanager.dev/docs/api/latest/NetworkManager-dispatcher.html), which is a daemon that runs scripts in the directory when there are certain changes to the network connection. According to the NetworkManager-dispatcher documentation linked above, the script runs as root, should be owned by root, should be executable, and must not be writable by groups or others.
+The script should be stored in `/etc/NetworkManager/dispatcher.d/`. It is invoked by [NetworkManager-dispatcher](https://networkmanager.dev/docs/api/latest/NetworkManager-dispatcher.html), which is a daemon that runs scripts in the directory when there are certain changes to the network connection. I suggest that you read more about NetworkManager-dispatcher on the [Arch Wiki](https://wiki.archlinux.org/title/NetworkManager#Network_services_with_NetworkManager_dispatcher), especially if you plan to modify the script so that it functions beyond its intended use.
 
-[Further reading on the Arch Wiki.](https://wiki.archlinux.org/title/NetworkManager#Network_services_with_NetworkManager_dispatcher)
+According to the NetworkManager-dispatcher documentation linked above, the script runs as root, should be owned by root, should be executable, and must not be writable by groups or others.
 
+**Using the script:**
 ```
+# You will need to modify the script in a text editor to specify the SSID/name of the Wi-Fi network that you want.
+# Read the comments in the script for more details about changes you may want to make.
+
 # Enable the NetworkManager-dispatcher daemon
 sudo systemctl enable NetworkManager-dispatcher.service
 
