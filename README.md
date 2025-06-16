@@ -14,7 +14,7 @@ According to the NetworkManager-dispatcher documentation linked above, the scrip
 
 **Using the script:**
 ```
-# You will need to modify the script in a text editor to specify the SSID/name of the Wi-Fi network that you want.
+# You will need to modify the script in a text editor to specify the SSID/name of the Wi-Fi network.
 # Read the comments in the script for more details about changes you may want to make.
 
 # Enable the NetworkManager-dispatcher daemon
