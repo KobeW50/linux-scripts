@@ -29,3 +29,15 @@ sudo chmod 755 30-manage-tailscale.sh
 # Move script to correct directory
 sudo mv 30-manage-tailscale.sh /etc/NetworkManager/dispatcher.d/
 ```
+
+### [toggle-vm.sh](/toggle-vm.sh)
+
+This script toggles a QEM-based virtual machine on and off using virsh (ie: the libvirt command-line utility). When toggling on, it opens the virtual machine in virt-manager.
+
+**Using the script:**
+```
+# You will need to modify the script in a text editor to specify the name of the virtual machine that it should toggle.
+
+# Make the script executable
+chmod +x toggle-vm.sh
+```
