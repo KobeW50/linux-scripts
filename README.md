@@ -3,3 +3,25 @@
 This repository contains my Linux scripts that are good enough for general use by others.
 
 ==
+
+### [30-manage-tailscale.sh](/30-manage-tailscale.sh)
+
+This script is useful if you want to disable Tailscale when you connect to certain networks (ie: your home Wi-Fi) and enable Tailscale when connected to any other network. It can easily be modified to perform any command unrelated to Tailscale when these conditions occur.
+
+The script should be stored in `/etc/NetworkManager/dispatcher.d/`. It is invoked by [NetworkManager-dispatcher](https://networkmanager.dev/docs/api/latest/NetworkManager-dispatcher.html), which is a daemon that runs scripts in the directory when there are certain changes to the network connection. According to the NetworkManager-dispatcher documentation linked above, the script runs as root, should be owned by root, should be executable, and must not be writable by groups or others.
+
+[Further reading on the Arch Wiki.](https://wiki.archlinux.org/title/NetworkManager#Network_services_with_NetworkManager_dispatcher)
+
+```
+# Enable the NetworkManager-dispatcher daemon
+sudo systemctl enable NetworkManager-dispatcher.service
+
+# Make root the owner of the script
+sudo chown root:root 30-manage-tailscale.sh
+
+# Give root write privaleges and everyone else read and execute privaleges
+sudo chmod 755 30-manage-tailscale.sh
+
+# Move script to correct directory
+sudo mv 30-manage-tailscale.sh /etc/NetworkManager/dispatcher.d/
+```
