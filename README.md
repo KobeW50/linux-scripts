@@ -1,7 +1,10 @@
 # Linux Scripts
 
-This repository contains my Linux scripts that are good enough for general use by others.
+This repository contains my Linux scripts that are good enough for general use by others. 
 
+The scripts in this README are arranged top-to-bottom from complex (high potential value) to very simple (you could easily write these on your own).
+
+Note that I am new to Linux and scripting. Use these at your own risk.
 ___
 
 ### [30-manage-tailscale.sh](/30-manage-tailscale.sh)
