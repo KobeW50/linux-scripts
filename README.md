@@ -26,7 +26,7 @@ sudo systemctl enable NetworkManager-dispatcher.service
 # Make root the owner of the script
 sudo chown root:root 30-manage-tailscale.sh
 
-# Give root write privaleges and everyone else read and execute privaleges
+# Give root write privileges and everyone else read and execute privileges
 sudo chmod 755 30-manage-tailscale.sh
 
 # Move script to correct directory
