@@ -4,7 +4,9 @@ This repository contains my Linux scripts that are good enough for general use b
 
 The scripts in this README are arranged top-to-bottom from complex (high potential value) to very simple (you could easily write these on your own).
 
-**Note that I am new to Linux and scripting. I absolutely vibecode. Use these at your own risk.**
+**Note that I am new to Linux and scripting. Use these at your own risk.**
+
+Please open an issue if you founds bugs, have questions, or want to contribute. Thanks :)
 ___
 
 ### [30-manage-tailscale.sh](/30-manage-tailscale.sh)
