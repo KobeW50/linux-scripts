@@ -6,7 +6,7 @@ The scripts in this README are arranged top-to-bottom from complex (high potenti
 
 **Note that I am new to Linux and scripting. Use these at your own risk.**
 
-Please open an issue if you founds bugs, have questions, or want to contribute. Thanks :)
+Please open an issue if you found bugs, have questions, or want to contribute. Thanks :)
 ___
 
 ### [30-manage-tailscale.sh](/30-manage-tailscale.sh)
