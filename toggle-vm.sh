@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Change this to whatever your virtual machine is named.
 # You can run `virsh list --all` to see the names of all of your virtual machines.

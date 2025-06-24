@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Change this to whatever your home netowrk SSID/name is. 
 # You can run `nmcli -g name con show --active` to see the networks you are currently connected to.
