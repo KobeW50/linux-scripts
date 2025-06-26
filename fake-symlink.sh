@@ -4,7 +4,6 @@
 # It is only present if the script was run on a local folder/file (ie: not through FTP, Samba, NFS, etc.)
 
 fallback_directory_icon="inode-directory"
-fallback_file_icon="filetypes"
 gio_is_installed="False"
 
 # GIO is used to get the icons of folders/files and to add symlink emblems to the application (.desktop) shortcuts
@@ -68,10 +67,8 @@ obtain_icon() {
     fi
 
     # If icon is not set
-    if [[ -z "$icon" && -d $1 ]]; then
+    if [[ -z "$icon" ]]; then
         icon="$fallback_directory_icon"
-    elif [[ -z "$icon" ]]; then
-        icon="$fallback_file_icon"
     fi
 }   
 
