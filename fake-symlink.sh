@@ -36,28 +36,24 @@ create_fake_symlinks() {
 
         symlink_name="Link to $selected_file"
 
-        # Create application (.desktop) shortcut:
-        #
-        # If item is a directory/folder make it a nemo shortcut
-        if [[ -d "$selected_file" ]]; then
-            echo -e "[Desktop Entry]\nName="$symlink_name"\nComment=\nExec=nemo --existing-window '${selected_file_paths[$item]}'\nType=Application\nIcon=$icon" > "${symlink_name}.desktop"
+        if get_unique_filename; then
+            # Create application (.desktop) shortcut:
+            #
+            # If item is a directory/folder make it a nemo shortcut
+            if [[ -d "$selected_file" ]]; then
+                echo -e "[Desktop Entry]\nName="$symlink_name"\nComment=\nExec=nemo --existing-window '${selected_file_paths[$item]}'\nType=Application\nIcon=$icon" > "${symlink_name}.desktop"
+                add_emblem
+                make_executable
 
-        # If item is a file or symlink open the file with the default application
-        elif [[ -f "$selected_file" || -L "$selected_file" ]]; then
-            echo -e "[Desktop Entry]\nName="$symlink_name"\nComment=\nExec=xdg-open '${selected_file_paths[$item]}'\nType=Application\nIcon=$icon" > "${symlink_name}.desktop"
-
-        else
-            error_message "${selected_file_paths[$item]} is a type of file that the script was not designed to handle. You can report the issue here: https://github.com/KobeW50/linux-scripts/issues"
+            # If item is a file or symlink open the file with the default application
+            elif [[ -f "$selected_file" || -L "$selected_file" ]]; then
+                echo -e "[Desktop Entry]\nName="$symlink_name"\nComment=\nExec=xdg-open '${selected_file_paths[$item]}'\nType=Application\nIcon=$icon" > "${symlink_name}.desktop"
+                add_emblem
+                make_executable
+            else
+                error_message "${selected_file_paths[$item]} is a type of file that the script was not designed to handle. You can report the issue here: https://github.com/KobeW50/linux-scripts/issues"
+            fi
         fi
-
-        # Add symlink emblem to application (.desktop) shortcut
-        if [[ "$gio_is_installed" == "True" ]]; then
-            gio set -t stringv "${symlink_name}.desktop" metadata::emblems emblem-link && touch "${symlink_name}.desktop"
-        fi
-
-        # Make the application (.desktop) shortcut executable
-        chmod +x "${symlink_name}.desktop"
-
     done
 }
 
@@ -84,14 +80,50 @@ obtain_icon() {
 }   
 
 
+# Generate a unique symlink filename if one already exists
+get_unique_filename() {
+    symlink_filename_candidate="$symlink_name"
+    i=1
+    max_attempts=10
+    while [[ -e "${symlink_filename_candidate}.desktop" ]]; do
+        
+        if (( i >= max_attempts )); then
+            error_message "The maximimum amount of identical shortcuts in a single directory that the script allows is ${max_attempts}."
+            return 1
+        else
+            ((i++))
+        fi
+
+        symlink_filename_candidate="${symlink_name} ${i}"
+    done
+
+    symlink_name="$symlink_filename_candidate"
+    return 0
+}
+
+
+# Add symlink emblem to application (.desktop) shortcut
+add_emblem() {
+    if [[ "$gio_is_installed" == "True" ]]; then
+        gio set -t stringv "${symlink_name}.desktop" metadata::emblems emblem-link && touch "${symlink_name}.desktop"
+    fi
+}
+
+
+# Make the application (.desktop) shortcut executable
+make_executable() {
+    chmod +x "${symlink_name}.desktop"
+}
+
+
 error_message() {
     echo "$1" > 'Script error message.txt'
-    exit 1
 }
 
 
 if [[ -z "$NEMO_SCRIPT_SELECTED_FILE_PATHS" ]]; then
     error_message "You need to select folders/files before running the script."
+    exit 1
 else
     create_fake_symlinks
 fi
