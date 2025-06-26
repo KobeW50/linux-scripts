@@ -41,7 +41,7 @@ sudo mv 30-manage-tailscale.sh /etc/NetworkManager/dispatcher.d/
 This script is for Nemo users who hate that directory symbolic links (symlinks) in Nemo don't "Follow link to original file". Rather, Nemo shows you a mirror of the linked directory, from which you can't navigate to the parent of the linked directory.
 
 **How it works:**
-Nemo has a feature where you can trigger a script by right-clicking. When you activate this script while folders/files are selected, the script will create an application shortcut (ie: a `.desktop` file) that opens the folder or file when clicked. The application shortcut is created in the directory you are currently in.
+Nemo has a feature where you can trigger a script by right-clicking. When you activate this script while folders are selected, the script will create an application shortcut (ie: a `.desktop` file) that opens the folder in Nemo when clicked. The application shortcut is created in the directory you are currently in. (If the script is ran on anything that isn't a directory then normal symlinks will be created for those items.)
 
 **Demo:**
 <img src="/assets/fake-symlink-demo.gif" width="1200"/>

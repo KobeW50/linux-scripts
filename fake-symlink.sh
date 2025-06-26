@@ -44,14 +44,10 @@ create_fake_symlinks() {
                 echo -e "[Desktop Entry]\nName="$symlink_name"\nComment=\nExec=nemo --existing-window '${selected_file_paths[$item]}'\nType=Application\nIcon=$icon" > "${symlink_name}.desktop"
                 add_emblem
                 make_executable
-
-            # If item is a file or symlink open the file with the default application
-            elif [[ -f "$selected_file" || -L "$selected_file" ]]; then
-                echo -e "[Desktop Entry]\nName="$symlink_name"\nComment=\nExec=xdg-open '${selected_file_paths[$item]}'\nType=Application\nIcon=$icon" > "${symlink_name}.desktop"
-                add_emblem
-                make_executable
+                
+            # If item is not a directory make an actual symlink to that item
             else
-                error_message "${selected_file_paths[$item]} is a type of file that the script was not designed to handle. You can report the issue here: https://github.com/KobeW50/linux-scripts/issues"
+                ln -s "${selected_file_paths[$item]}" "$symlink_name" 
             fi
         fi
     done
