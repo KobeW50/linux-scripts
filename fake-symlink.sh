@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # NEMO_SCRIPT_SELECTED_FILE_PATHS is an environment variable that has newline-delimited paths for selected files
-# It is only present if the script was run on a local folder/file (ie: not through FTP, Samba, NFS, etc.)
+# It is only present if the script was run on a local folder/file (ie: not web content, FTP content, etc.)
 
 fallback_directory_icon="inode-directory"
 gio_is_installed=""
@@ -136,7 +136,7 @@ error_message() {
 
 
 if [[ -z "$NEMO_SCRIPT_SELECTED_FILE_PATHS" ]]; then
-    error_message "You need to select folders/files before running the script."
+    error_message "The script did not recieve any folders/files as input. This can occur if nothing was selected or if the items are not local folders/files."
     exit 1
 else
     create_symlinks

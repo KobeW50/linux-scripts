@@ -50,7 +50,7 @@ Nemo has a feature where you can trigger a script by right-clicking. When you ac
 - You can't copy/move items into the shortcut.
 - Folder shortcuts will open in a new tab instead of the current tab.
 - Applications don't treat the shortcuts as symlinks. The shortcuts are just meant for navigation within Nemo.
-- It only works on local folders/files (ie: not through FTP, Samba, NFS, etc.).
+- It only works on local folders/files (ie: not web content, FTP content, etc.).
 - Sometimes you need to refresh the tab for the shortcuts to appear. But this is rare.
 - This script was only tested on Linux Mint 22 Cinnamon with Nemo 6.2.8.
 
