@@ -135,7 +135,7 @@ error_message() {
 
 
 if [[ -z "$NEMO_SCRIPT_SELECTED_FILE_PATHS" ]]; then
-    error_message >> "You need to select folders/files before running the script."
+    error_message "You need to select folders/files before running the script."
     exit 1
 else
     create_symlinks
