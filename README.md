@@ -44,14 +44,12 @@ This script is for Nemo users who hate that directory symbolic links (symlinks) 
 Nemo has a feature where you can trigger a script by right-clicking. When you activate this script while folders are selected, the script will create an application shortcut (ie: a `.desktop` file) that opens the folder in Nemo when clicked. The application shortcut is created in the directory you are currently in. (If the script is ran on anything that isn't a directory then normal symlinks will be created for those items.)
 
 **Demo:**
-<img src="/assets/fake-symlink-demo.gif" width="1200"/>
+<img src="/assets/fake-script-demo.gif" width="1200"/>
 
 **Limitations:**
-- File previews (such as for image files) will not appear.
 - Folder shortcuts will open in a new tab instead of the current tab.
-- Shortcuts of real symlinks will open in a new Nemo window.
-- Sometimes you need to refresh the tab for the shortcuts to appear.
 - Applications don't treat the shortcuts as symlinks. The shortcuts are just meant for navigation within Nemo.
+- Sometimes you need to refresh the tab for the shortcuts to appear. But this is rare.
 - This script was only tested on Linux Mint 22 Cinnamon with Nemo 6.2.8.
 
 **Using the script:**
