@@ -35,6 +35,38 @@ sudo chmod 755 30-manage-tailscale.sh
 sudo mv 30-manage-tailscale.sh /etc/NetworkManager/dispatcher.d/
 ```
 
+
+### [fake-symlink.sh](/fake-symlink.sh)
+
+This script is for Nemo users who hate that directory symbolic links (symlinks) in Nemo don't "Follow link to original file". Rather, Nemo shows you a mirror of the linked directory, from which you can't navigate to the parent of the linked directory.
+
+**How it works:**
+Nemo has a feature where you can trigger a script by right-clicking. When you activate this script while folders/files are selected, the script will create an application shortcut (ie: a `.desktop` file) that opens the folder or file when clicked. The application shortcut is created in the directory you are currently in.
+
+**Demo:**
+<img src="/assets/fake-symlink-demo.gif" width="1200"/>
+
+**Limitations:**
+- File previews (such as for image files) will not appear.
+- Folder shortcuts will open in a new tab instead of the current tab.
+- Shortcuts of real symlinks will open in a new Nemo window.
+- Sometimes you need to refresh the tab for the shortcuts to appear.
+- Applications don't treat the shortcuts as symlinks. The shortcuts are just meant for navigation within Nemo.
+- This script was only tested on Linux Mint 22 Cinnamon with Nemo 6.2.8.
+
+**Using the script:**
+```
+# Make the script executable
+chmod +x fake-symlink.sh
+
+# Move the script to the Nemo script directory
+mv fake-symlink.sh ~/.local//share/nemo/scripts/
+
+# See the GIF below to learn how to enable scripts in Nemo and activate the script
+```
+<img src="/assets/nemo-script-preferences.gif" width="1200"/>
+
+
 ### [toggle-vm.sh](/toggle-vm.sh)
 
 This script toggles a QEMU-based virtual machine on and off using virsh (ie: the libvirt command-line utility). When toggling on, it opens the virtual machine in virt-manager.
