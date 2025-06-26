@@ -6,8 +6,8 @@
 fallback_directory_icon="inode-directory"
 gio_is_installed=""
 
-
 create_symlinks() {
+
     # Remove trailing '\n'
     NEMO_SCRIPT_SELECTED_FILE_PATHS="${NEMO_SCRIPT_SELECTED_FILE_PATHS%$'\n'}" 
 
@@ -36,6 +36,7 @@ create_symlinks() {
 
 
 make_fake_symlink() {
+
     # If GIO's installation status wasn't checked previously, check it
     if [[ -z "$gio_is_installed" ]]; then
         is_gio_installed
