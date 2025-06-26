@@ -6,7 +6,7 @@
 fallback_directory_icon="inode-directory"
 gio_is_installed="False"
 
-# GIO is used to get the icons of folders/files and to add symlink emblems to the application (.desktop) shortcuts
+# GIO is used to get the icons of folders and to add symlink emblems to the application (.desktop) shortcuts
 is_gio_installed() {
     if which gio >/dev/null 2>&1; then
         gio_is_installed="True"
@@ -27,7 +27,7 @@ create_fake_symlinks() {
 
     for item in "${!selected_file_paths[@]}"; do
 
-        # Obtain icon of folder/file
+        # Obtain icon of folder
         obtain_icon "${selected_file_paths[$item]}"
 
         # Get folder/file name without prepended path
