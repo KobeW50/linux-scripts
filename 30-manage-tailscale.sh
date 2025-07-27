@@ -11,7 +11,7 @@ if [[ "$2" == "up" ]]; then
 
   # Check that dependencies are met
   for dependency in ip awk grep tailscale; do
-    if ! command -v "$dependency" >/dev/null 2>&1; then
+    if ! command -v "$dependency"; then
       exit 1
     fi
   done
