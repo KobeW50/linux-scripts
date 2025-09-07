@@ -2,7 +2,7 @@
 
 # This script is supplied with the action that triggered it as the second argument.
 # The CONNECTION_ID is an environment variable available to the script.
-# https://networkmanager.dev/docs/api/latest/NetworkManager-dispatcher.html
+# https://networkmanager.dev/docs/api/latest/NetworkManager-dispatcher.html (NETWORKMANAGER-DISPATCHER(8))
 
 ssid="my home wifi"
 otherTrustedConnection="Wired connection"
