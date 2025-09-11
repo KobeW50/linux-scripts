@@ -40,7 +40,8 @@ sudo mv 30-manage-tailscale.sh /etc/NetworkManager/dispatcher.d/
 
 ### [power-profiles.sh](/power-profiles.sh)
 
-This script dynamically sets the power-profiles-daemon mode depending on whether or not the device is charging. It runs in the background and periodically checks if the charging/discharging state has changed. The script stops running if you manually change the power-profiles-daemon mode. The script also has the ability to prevent the higher-power mode from being used until the battery is charged past a specified point (default: `>20%`). One day I may simplify this script by using `udev` instead.
+This script dynamically sets the power-profiles-daemon mode depending on whether or not the device is charging. It runs in the background and periodically checks if the charging/discharging state has changed. The script stops running if you manually change the power-profiles-daemon mode. By default, the script will always set power-profiles-daemon to 'balanced' mode when charging. Variables at the beginning of the script can be configured so that 'balanced' mode and/or 'performance' mode are used when charging after a specific battery percentage has been reached.
+One day I may simplify this script by using `udev` instead.
 
 > Note that this script's functionality is already implemented in newer [releases of power-profiles-daemon](https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/releases). If you using an adequately up-to-date version, see the [power-profiles-daemon README.md](https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/blob/main/README.md) for information on how to make it behave dynamically.
 
