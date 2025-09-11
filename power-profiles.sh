@@ -32,7 +32,6 @@ check_power_modes() {
     if ! powerprofilesctl list | grep -q $BEST_MODE; then
         BEST_MODE="balanced"
         WORST_MODE="power-saver"
-        echo "modes rebalanced"
     fi
 }
 
